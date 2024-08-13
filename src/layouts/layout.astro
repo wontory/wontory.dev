@@ -1,5 +1,7 @@
 ---
+import Footer from "~/components/footer.astro";
 import Head from "~/components/head.astro";
+import Header from "~/components/header.astro";
 import { SITE } from "~/constants/site";
 
 type Props = {
@@ -15,9 +17,11 @@ const { title, description } = Astro.props;
 	<head>
 		<Head title={`${title} | ${SITE.TITLE}`} description={description} />
 	</head>
-	<body>
-		<main>
+	<body class="dark font-mono antialiased flex flex-col">
+		<Header/>
+		<main class="flex-1 py-32 container max-w-screen-sm">
       <slot/>
     </main>
+		<Footer/>
 	</body>
 </html>
