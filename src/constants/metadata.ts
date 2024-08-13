@@ -1,7 +1,7 @@
 import type { Metadata } from "~/types/metadata";
 
 const HOME: Metadata = {
-	TITLE: "wontory.dev",
+	TITLE: "홈",
 	DESCRIPTION: "프론트엔드 개발자 조성원의 블로그",
 };
 
