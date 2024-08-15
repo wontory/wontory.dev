@@ -17,8 +17,12 @@
 }
 
 @layer base {
+  html {
+    @apply size-full scroll-pt-24;
+  }
+
   body {
-    @apply bg-background text-foreground/75;
+    @apply bg-background text-foreground/75 size-full;
   }
 }
 
