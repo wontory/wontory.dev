@@ -1,7 +1,21 @@
 ---
+import { type CollectionEntry, getCollection } from "astro:content";
+import ArrowCard from "~/components/arrow-card.astro";
 import { HOME } from "~/constants/metadata";
 import { SITE } from "~/constants/site";
+import { SOCIALS } from "~/constants/social";
 import Layout from "~/layouts/layout.astro";
+import { process } from "~/utils/process";
+
+const posts: CollectionEntry<"blog">[] = process<"blog">(
+	await getCollection("blog"),
+	SITE.NUM_POSTS_ON_HOMEPAGE,
+);
+
+const crafts: CollectionEntry<"craft">[] = process<"craft">(
+	await getCollection("craft"),
+	SITE.NUM_CRAFTS_ON_HOMEPAGE,
+);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -35,7 +49,15 @@ import Layout from "~/layouts/layout.astro";
 					</h2>
 					<a href="/blog">전체보기</a>
 				</div>
-				<ul class="not-prose flex flex-col gap-4"></ul>
+				<ul class="not-prose flex flex-col gap-4">
+					{
+						posts.map((post) => (
+							<li>
+								<ArrowCard entry={post} />
+							</li>
+						))
+					}
+				</ul>
 			</section>
 			<section class="animate space-y-6">
 				<div class="flex flex-wrap items-center justify-between gap-y-2">
@@ -44,18 +66,35 @@ import Layout from "~/layouts/layout.astro";
 					</h2>
 					<a href="/craft">전체보기</a>
 				</div>
-				<ul class="not-prose flex flex-col gap-4"></ul>
+				<ul class="not-prose flex flex-col gap-4">
+					{
+						crafts.map((craft) => (
+							<li>
+								<ArrowCard entry={craft} />
+							</li>
+						))
+					}
+				</ul>
 			</section>
 			<section class="animate space-y-4">
 				<h2 class="font-semibold text-foreground">
 					연락처
 				</h2>
-				<article>
+				<article class="space-y-4 prose prose-neutral dark:prose-invert max-w-full">
 					<p>
 						다양한 사람들과 이야기하며 견해를 넓히는 것을 좋아합니다. 언제든지 연락주세요.
 					</p>
 				</article>
-				<ul class="not-prose flex flex-wrap gap-2">
+				<ul class="not-prose flex flex-wrap gap-4">
+					{
+						SOCIALS.map((SOCIAL) => (
+							<li class="flex gap-x-2 text-nowrap">
+								<a href={SOCIAL.HREF}>
+									{SOCIAL.NAME}
+								</a>
+							</li>
+						))
+					}
 					<li class="line-clamp-1">
 						<a href={`mailto:${SITE.EMAIL}`} aria-label={`Email ${SITE.TITLE}`}>{SITE.EMAIL}</a>
 					</li>
