@@ -21,3 +21,13 @@
     @apply bg-background text-foreground/75;
   }
 }
+
+@layer utilities {
+  .animate {
+    @apply -translate-y-3 opacity-0 transition-all duration-300 ease-out;
+
+    &.show {
+      @apply translate-y-0 opacity-100;
+    }
+  }
+}
