@@ -1,0 +1,29 @@
+---
+import BaseHead from "~/components/base-head.astro";
+import BaseScript from "~/components/base-script.astro";
+import SiteFooter from "~/components/site-footer.astro";
+import SiteHeader from "~/components/site-header.astro";
+import "~/styles/globals.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <BaseHead {title} {description} />
+    <BaseScript />
+  </head>
+  <body class="flex min-h-screen flex-col font-sans antialiased">
+    <SiteHeader />
+    <main class="container max-w-screen-sm flex-1 py-14">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
