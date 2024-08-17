@@ -1,0 +1,21 @@
+---
+
+---
+
+<script is:inline>
+  const init = () => {
+    animate();
+  };
+
+  const animate = () => {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 100);
+    });
+  };
+
+  document.addEventListener("astro:page-load", () => init());
+</script>
