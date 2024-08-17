@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "~/components/post-card.astro";
+import Layout from "~/layouts/layout.astro";
+
+const posts = (await getCollection("craft"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout
+  title="공방 | wontory"
+  description="레퍼런스를 참고하여 만든 작품들을 공유하는 공간입니다."
+>
+  <div class="space-y-4">
+    <section class="animate space-y-4">
+      <h2 class="font-semibold text-foreground">공방</h2>
+      <ul class="flex flex-col gap-4">
+        {
+          posts.map((post) => (
+            <li>
+              <PostCard entry={post} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Layout>

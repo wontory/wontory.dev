@@ -1,0 +1,48 @@
+---
+import type { GetStaticPaths } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import Button from "~/components/ui/button.astro";
+import Link from "~/components/ui/link.astro";
+import Layout from "~/layouts/layout.astro";
+
+export const getStaticPaths = (async () => {
+  const posts = (await getCollection("blog"))
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}) satisfies GetStaticPaths;
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout
+  title={`${post.data.title} | wontory`}
+  description={post.data.description}
+>
+  <div class="animate">
+    <a href="/blog">
+      <Button>뒤로가기</Button>
+    </a>
+  </div>
+  <div class="animate my-10 space-y-1">
+    <div class="font-base flex items-center gap-2 text-sm">시간 리딩타임</div>
+    <h1 class="text-3xl font-semibold text-foreground">
+      {post.data.title}
+    </h1>
+  </div>
+  <div class="animate flex flex-col gap-24">
+    <article class="prose">
+      <Content components={{ a: Link }} />
+    </article>
+    <div>게시글 네비게이션</div>
+    <div>댓글</div>
+  </div>
+</Layout>

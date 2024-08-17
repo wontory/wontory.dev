@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PostCard from "~/components/post-card.astro";
+import Layout from "~/layouts/layout.astro";
+
+const blogCollection = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const posts = blogCollection.reduce(
+  (acc: { [year: string]: CollectionEntry<"blog">[] }, post) => {
+    const year = post.data.date.getFullYear().toString();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  },
+  {},
+);
+
+const years = Object.keys(posts).sort(
+  (a, b) => Number.parseInt(b) - Number.parseInt(a),
+);
+---
+
+<Layout
+  title="기록 | wontory"
+  description="학습, 개발, 삶에 대한 기록을 남기는 공간입니다."
+>
+  <div class="space-y-4">
+    {
+      years.map((year) => (
+        <section class="animate space-y-4">
+          <h2 class="font-semibold text-foreground">{year}</h2>
+          <ul class="flex flex-col gap-4">
+            {posts[year].map((post) => (
+              <li>
+                <PostCard entry={post} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+</Layout>

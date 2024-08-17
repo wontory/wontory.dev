@@ -1,0 +1,15 @@
+---
+import Button from "~/components/ui/button.astro";
+import Layout from "~/layouts/layout.astro";
+---
+
+<Layout title="404 | wontory" description="페이지를 찾을 수 없습니다.">
+  <div class="grid place-items-center gap-4">
+    <h2 class="animate text-2xl font-semibold text-foreground">
+      404: 페이지를 찾을 수 없습니다.
+    </h2>
+    <span class="animate">
+      <a href="/"><Button>홈으로 가기</Button></a>
+    </span>
+  </div>
+</Layout>
