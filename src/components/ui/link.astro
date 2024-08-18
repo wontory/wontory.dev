@@ -1,14 +1,20 @@
 ---
+import { cn } from "~/utils/cn";
+
 interface Props {
   href: string;
+  class?: string;
 }
 
-const { href } = Astro.props;
+const { href, class: className } = Astro.props;
 ---
 
 <a
   {href}
-  class="font-normal underline decoration-foreground/30 underline-offset-4 transition-colors duration-300 hover:text-foreground hover:decoration-foreground/50"
+  class={cn(
+    "font-normal underline decoration-foreground/30 underline-offset-4 transition-colors duration-300 hover:text-foreground hover:decoration-foreground/50",
+    className,
+  )}
 >
   <slot />
 </a>
