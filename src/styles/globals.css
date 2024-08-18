@@ -33,6 +33,10 @@
 @layer utilities {
   .prose {
     @apply prose-neutral max-w-full dark:prose-invert prose-headings:font-semibold prose-headings:text-foreground prose-img:mx-auto prose-img:my-auto;
+
+    & .expressive-code {
+      @apply mb-5;
+    }
   }
 
   .animate {
