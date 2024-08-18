@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { ContentEntryMap, CollectionEntry } from "astro:content";
 import Card from "~/components/ui/card.astro";
 
-interface Props {
-  entry: CollectionEntry<"blog" | "craft">;
+interface Props<T extends keyof ContentEntryMap> {
+  entry: CollectionEntry<T>;
 }
 
 const { entry } = Astro.props;
