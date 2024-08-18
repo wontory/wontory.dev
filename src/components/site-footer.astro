@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from "~/components/ui/button.astro";
 ---
 
@@ -6,12 +7,21 @@ import Button from "~/components/ui/button.astro";
   <div class="container max-w-screen-sm py-6">
     <div class="relative">
       <Button size="icon" id="back-to-top" class="absolute -top-12 right-0">
-        T
+        <Icon name="lucide:arrow-up" class="size-4" />
       </Button>
     </div>
     <div class="flex items-center justify-between gap-4">
       <span>&copy; {new Date().getFullYear()} ﹒ wontory.dev</span>
-      <Button size="icon">L</Button>
+      <Button size="icon">
+        <Icon
+          name="lucide:sun"
+          class="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+        />
+        <Icon
+          name="lucide:moon"
+          class="absolute size-4 rotate-90 scale-0 transition-all dark:-rotate-0 dark:scale-100"
+        />
+      </Button>
     </div>
   </div>
 </footer>

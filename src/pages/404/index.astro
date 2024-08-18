@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from "~/components/ui/button.astro";
 import Layout from "~/layouts/layout.astro";
 ---
@@ -9,7 +10,12 @@ import Layout from "~/layouts/layout.astro";
       404: 페이지를 찾을 수 없습니다.
     </h2>
     <span class="animate">
-      <a href="/"><Button>홈으로 가기</Button></a>
+      <a href="/">
+        <Button class="gap-2">
+          <span><Icon name="lucide:arrow-left" class="size-4" /></span>
+          <span>홈으로 가기</span>
+        </Button>
+      </a>
     </span>
   </div>
 </Layout>

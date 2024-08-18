@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
 import Giscus from "~/components/giscus.astro";
 import PostNavigation from "~/components/post-navigation.astro";
 import Button from "~/components/ui/button.astro";
@@ -34,7 +35,10 @@ const id = posts.findIndex((post) => post.slug === Astro.params.slug);
 >
   <div class="animate">
     <a href="/blog">
-      <Button>뒤로가기</Button>
+      <Button class="gap-2">
+        <span><Icon name="lucide:arrow-left" class="size-4" /></span>
+        <span>뒤로가기</span>
+      </Button>
     </a>
   </div>
   <div class="animate my-10 space-y-1">
