@@ -9,10 +9,7 @@ const { class: className } = Astro.props;
 ---
 
 <div
-  class={cn(
-    "transition-color flex rounded-md border border-foreground/15 px-4 py-3 duration-300 ease-in-out hover:bg-foreground/5 hover:text-foreground",
-    className,
-  )}
+  class={cn("flex rounded-md border border-foreground/15 px-4 py-3", className)}
 >
   <slot />
 </div>

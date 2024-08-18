@@ -11,9 +11,11 @@ const { entry } = Astro.props;
 ---
 
 <a href={`/${entry.collection}/${entry.slug}`}>
-  <Card class="items-center justify-between">
+  <Card
+    class="transition-color hover:border-primary items-center justify-between duration-300 ease-in-out hover:text-foreground"
+  >
     <div class="flex flex-col *:line-clamp-1">
-      <h4 class="font-semibold">{entry.data.title}</h4>
+      <h3 class="font-semibold">{entry.data.title}</h3>
       <span class="text-sm">{entry.data.description}</span>
     </div>
     <div>
