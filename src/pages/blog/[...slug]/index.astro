@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import Giscus from "~/components/giscus.astro";
 import PostNavigation from "~/components/post-navigation.astro";
 import Button from "~/components/ui/button.astro";
 import Link from "~/components/ui/link.astro";
@@ -49,6 +50,6 @@ const id = posts.findIndex((post) => post.slug === Astro.params.slug);
       <Content components={{ a: Link }} />
     </article>
     <div><PostNavigation current={id} collection={posts} /></div>
-    <div>댓글</div>
+    <div><Giscus /></div>
   </div>
 </Layout>
