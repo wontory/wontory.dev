@@ -53,7 +53,7 @@ const id = posts.findIndex((post) => post.slug === Astro.params.slug);
     <article class="prose">
       <Content components={{ a: Link }} />
     </article>
-    <div><PostNavigation current={id} collection={posts} /></div>
-    <div><Giscus /></div>
+    {posts.length > 1 && <PostNavigation current={id} collection={posts} />}
+    <Giscus />
   </div>
 </Layout>
