@@ -12,21 +12,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 96%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 0%;
+
+    --primary: 212 100% 43%;
 
     --radius: 0rem;
   }
 
   .dark {
-    --background: 0 0 9%;
+    --background: 228 10% 10%;
     --foreground: 0 0% 100%;
+
+    --primary: 213 95% 68%;
   }
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground/75;
+    @apply bg-background text-foreground/70;
   }
 }
 
