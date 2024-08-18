@@ -3,10 +3,27 @@ import Button from "~/components/ui/button.astro";
 ---
 
 <footer class="animate text-sm">
-  <div
-    class="container flex max-w-screen-sm items-center justify-between gap-4 py-6"
-  >
-    <span>&copy; {new Date().getFullYear()} ﹒ wontory.dev</span>
-    <Button size="icon">L</Button>
+  <div class="container max-w-screen-sm py-6">
+    <div class="relative">
+      <Button size="icon" id="back-to-top" class="absolute -top-12 right-0">
+        T
+      </Button>
+    </div>
+    <div class="flex items-center justify-between gap-4">
+      <span>&copy; {new Date().getFullYear()} ﹒ wontory.dev</span>
+      <Button size="icon">L</Button>
+    </div>
   </div>
 </footer>
+
+<script is:inline>
+  const backToTop = () => {
+    const button = document.getElementById("back-to-top");
+    button?.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  };
+
+  document.addEventListener("astro:page-load", () => backToTop());
+</script>
