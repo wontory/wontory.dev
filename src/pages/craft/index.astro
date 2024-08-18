@@ -2,10 +2,9 @@
 import { getCollection } from "astro:content";
 import PostCard from "~/components/post-card.astro";
 import Layout from "~/layouts/layout.astro";
+import { process } from "~/utils/process";
 
-const posts = (await getCollection("craft"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = process<"craft">(await getCollection("craft"));
 ---
 
 <Layout

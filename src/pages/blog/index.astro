@@ -3,10 +3,9 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PostCard from "~/components/post-card.astro";
 import Layout from "~/layouts/layout.astro";
+import { process } from "~/utils/process";
 
-const blogCollection = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const blogCollection = process<"blog">(await getCollection("blog"));
 
 const posts = blogCollection.reduce(
   (acc: { [year: string]: CollectionEntry<"blog">[] }, post) => {
