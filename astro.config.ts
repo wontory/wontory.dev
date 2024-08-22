@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -10,6 +10,9 @@ export default defineConfig({
   site: "https://www.wontory.dev",
   integrations: [expressiveCode(), icon(), mdx(), sitemap(), tailwind()],
   image: {
-    service: passthroughImageService(),
-  }
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: { limitInputPixels: false },
+    },
+  },
 });
