@@ -41,7 +41,7 @@ const id = posts.findIndex((post) => post.slug === Astro.params.slug);
       </Button>
     </a>
   </div>
-  <div class="animate my-10 space-y-1">
+  <div class="animate my-10 space-y-2">
     <div class="font-base flex items-center gap-1 text-sm">
       <time datetime={post.data.date.toISOString()}>
         {formatDate(post.data.date)}
