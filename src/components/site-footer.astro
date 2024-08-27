@@ -13,7 +13,7 @@ import Button from "~/components/ui/button.astro";
     </div>
     <div class="flex items-center justify-between gap-4">
       <span>&copy; {new Date().getFullYear()} ﹒ wontory.dev</span>
-      <Button size="icon">
+      <Button size="icon" id="theme-toggle">
         <Icon
           name="lucide:sun"
           class="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
@@ -37,5 +37,21 @@ import Button from "~/components/ui/button.astro";
     });
   };
 
-  document.addEventListener("astro:page-load", () => backToTop());
+  const toggleTheme = () => {
+    const button = document.getElementById("theme-toggle");
+    const html = document.documentElement;
+
+    button.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.setItem(
+        "theme",
+        html.classList.contains("dark") ? "dark" : "light",
+      );
+    });
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    backToTop();
+    toggleTheme();
+  });
 </script>

@@ -3,10 +3,6 @@
 ---
 
 <script is:inline>
-  const init = () => {
-    animate();
-  };
-
   const animate = () => {
     const animateElements = document.querySelectorAll(".animate");
 
@@ -17,5 +13,18 @@
     });
   };
 
-  document.addEventListener("astro:page-load", () => init());
+  const preloadTheme = () => {
+    const theme = localStorage.getItem("theme");
+
+    if (
+      theme === "dark" ||
+      (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    }
+  };
+
+  document.addEventListener("astro:page-load", () => animate());
+  document.addEventListener("astro:after-swap", () => preloadTheme());
+  preloadTheme();
 </script>
