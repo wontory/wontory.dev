@@ -43,6 +43,7 @@ date: "2024-08-11"
 &nbsp;
 
 ## Lazy Loading 구현
+
 `loading="lazy"`는 `next/image`의 기본값이기 때문에 특별히 작성해줘야 할 코드는 없습니다.
 `Velite`에서 생성한 `blurDataUrl`을 `Image`의 속성으로 추가해줍니다.
 `next/image`의 `blurDataUrl` 속성은 `placeholder="blur"`가 함께 작성되어야 작동합니다.
@@ -59,15 +60,16 @@ return (
         width={640}
         height={360}
       />
-      <canvas className="absolute top-0 left-0 h-full w-full" />
+      <canvas className="absolute left-0 top-0 h-full w-full" />
     </div>
   </div>
-)
+);
 ```
 
 &nbsp;
 
 ## Pixelation 필터 구현
+
 필터 구현을 위해 `Image`와 `canvas`를 `ref` 속성으로 참조해줍니다.
 
 ```tsx
@@ -92,31 +94,31 @@ const image = useRef<HTMLImageElement>(null)
 ```tsx
 useEffect(() => {
   if (canvas.current && image.current) {
-    const ctx = canvas.current.getContext('2d')
-    const img = image.current
+    const ctx = canvas.current.getContext("2d");
+    const img = image.current;
 
     if (ctx) {
-      const width = canvas.current.width
-      const height = canvas.current.height
+      const width = canvas.current.width;
+      const height = canvas.current.height;
 
-      ctx.drawImage(img, 0, 0, width, height)
+      ctx.drawImage(img, 0, 0, width, height);
 
-      const pixelSize = 12
+      const pixelSize = 12;
 
-      const imageData = ctx.getImageData(0, 0, width, height)
-      const data = imageData.data
+      const imageData = ctx.getImageData(0, 0, width, height);
+      const data = imageData.data;
 
       for (let y = 0; y < height; y += pixelSize) {
         for (let x = 0; x < width; x += pixelSize) {
-          const i = (y * width + x) * 4
+          const i = (y * width + x) * 4;
 
-          ctx.fillStyle = `rgb(${data[i]}, ${data[i + 1]}, ${data[i + 2]})`
-          ctx.fillRect(x, y, pixelSize, pixelSize)
+          ctx.fillStyle = `rgb(${data[i]}, ${data[i + 1]}, ${data[i + 2]})`;
+          ctx.fillRect(x, y, pixelSize, pixelSize);
         }
       }
     }
   }
-}, [])
+}, []);
 ```
 
 여기에서 사용된 `pixelSize` 변수는 렌더링과 연관되어있는 값이기 때문에 최종적으로는 `state`로 분리되어야 합니다.
@@ -136,22 +138,22 @@ useEffect(() => {
 그리고 이 `interval`은 `pixelSize`가 1보다 작아지면 중단되어야 합니다.
 
 ```tsx
-const [pixelSize, setPixelSize] = useState(128)
+const [pixelSize, setPixelSize] = useState(128);
 
 useEffect(() => {
   const intervalId = setInterval(() => {
     setPixelSize((prevSize) => {
-      const newSize = prevSize / 2
+      const newSize = prevSize / 2;
       if (newSize < 1) {
-        clearInterval(intervalId)
-        return 1
+        clearInterval(intervalId);
+        return 1;
       }
-      return newSize
-    })
-  }, 100)
+      return newSize;
+    });
+  }, 100);
 
-  return () => clearInterval(intervalId)
-}, [])
+  return () => clearInterval(intervalId);
+}, []);
 ```
 
 &nbsp;
@@ -163,56 +165,56 @@ useEffect(() => {
 ### 전체 코드
 
 ```tsx
-'use client'
+"use client";
 
-import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 function ImageLazyLoading() {
-  const canvas = useRef<HTMLCanvasElement>(null)
-  const image = useRef<HTMLImageElement>(null)
-  const [pixelSize, setPixelSize] = useState(128)
+  const canvas = useRef<HTMLCanvasElement>(null);
+  const image = useRef<HTMLImageElement>(null);
+  const [pixelSize, setPixelSize] = useState(128);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setPixelSize((prevSize) => {
-        const newSize = prevSize / 2
+        const newSize = prevSize / 2;
         if (newSize < 1) {
-          clearInterval(intervalId)
-          return 1
+          clearInterval(intervalId);
+          return 1;
         }
-        return newSize
-      })
-    }, 100)
+        return newSize;
+      });
+    }, 100);
 
-    return () => clearInterval(intervalId)
-  }, [])
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     if (canvas.current && image.current) {
-      const ctx = canvas.current.getContext('2d')
-      const img = image.current
+      const ctx = canvas.current.getContext("2d");
+      const img = image.current;
 
       if (ctx) {
-        const width = canvas.current.width
-        const height = canvas.current.height
+        const width = canvas.current.width;
+        const height = canvas.current.height;
 
-        ctx.drawImage(img, 0, 0, width, height)
+        ctx.drawImage(img, 0, 0, width, height);
 
-        const imageData = ctx.getImageData(0, 0, width, height)
-        const data = imageData.data
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const data = imageData.data;
 
         for (let y = 0; y < height; y += pixelSize) {
           for (let x = 0; x < width; x += pixelSize) {
-            const i = (y * width + x) * 4
+            const i = (y * width + x) * 4;
 
-            ctx.fillStyle = `rgb(${data[i]}, ${data[i + 1]}, ${data[i + 2]})`
-            ctx.fillRect(x, y, pixelSize, pixelSize)
+            ctx.fillStyle = `rgb(${data[i]}, ${data[i + 1]}, ${data[i + 2]})`;
+            ctx.fillRect(x, y, pixelSize, pixelSize);
           }
         }
       }
     }
-  }, [pixelSize])
+  }, [pixelSize]);
 
   return (
     <div className="flex">
@@ -226,13 +228,13 @@ function ImageLazyLoading() {
           height={360}
           ref={image}
         />
-        <canvas ref={canvas} className="absolute top-0 left-0 h-full w-full" />
+        <canvas ref={canvas} className="absolute left-0 top-0 h-full w-full" />
       </div>
     </div>
-  )
+  );
 }
 
-export { ImageLazyLoading }
+export { ImageLazyLoading };
 ```
 
 &nbsp;
