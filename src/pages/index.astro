@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
-import PostCard from "~/components/post-card.astro";
-import Link from "~/components/ui/link.astro";
-import Layout from "~/layouts/layout.astro";
-import { process } from "~/utils/process";
+import { getCollection } from 'astro:content'
+import PostCard from '~/components/post-card.astro'
+import Link from '~/components/ui/link.astro'
+import Layout from '~/layouts/layout.astro'
+import { process } from '~/utils/process'
 
-const blog = process<"blog">(await getCollection("blog")).slice(0, 5);
-const craft = process<"craft">(await getCollection("craft")).slice(0, 3);
+const blog = process<'blog'>(await getCollection('blog')).slice(0, 5)
+const craft = process<'craft'>(await getCollection('craft')).slice(0, 3)
 ---
 
 <Layout

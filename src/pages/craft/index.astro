@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import PostCard from "~/components/post-card.astro";
-import Layout from "~/layouts/layout.astro";
-import { process } from "~/utils/process";
+import { getCollection } from 'astro:content'
+import PostCard from '~/components/post-card.astro'
+import Layout from '~/layouts/layout.astro'
+import { process } from '~/utils/process'
 
-const posts = process<"craft">(await getCollection("craft"));
+const posts = process<'craft'>(await getCollection('craft'))
 ---
 
 <Layout

@@ -1,32 +1,32 @@
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection, type CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
-import Giscus from "~/components/giscus.astro";
-import PostNavigation from "~/components/post-navigation.astro";
-import Button from "~/components/ui/button.astro";
-import Link from "~/components/ui/link.astro";
-import Layout from "~/layouts/layout.astro";
-import { formatDate } from "~/utils/date";
-import { process } from "~/utils/process";
-import { readingTime } from "~/utils/reading-time";
+import { type CollectionEntry, getCollection } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+import { Icon } from 'astro-icon/components'
+import Giscus from '~/components/giscus.astro'
+import PostNavigation from '~/components/post-navigation.astro'
+import Button from '~/components/ui/button.astro'
+import Link from '~/components/ui/link.astro'
+import Layout from '~/layouts/layout.astro'
+import { formatDate } from '~/utils/date'
+import { process } from '~/utils/process'
+import { readingTime } from '~/utils/reading-time'
 
 export const getStaticPaths = (async () => {
-  const posts = process<"blog">(await getCollection("blog"));
+  const posts = process<'blog'>(await getCollection('blog'))
 
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
-  }));
-}) satisfies GetStaticPaths;
+  }))
+}) satisfies GetStaticPaths
 
-type Props = CollectionEntry<"blog">;
+type Props = CollectionEntry<'blog'>
 
-const post = Astro.props;
+const post = Astro.props
 
-const { Content } = await post.render();
-const posts = process<"blog">(await getCollection("blog"));
-const id = posts.findIndex((post) => post.slug === Astro.params.slug);
+const { Content } = await post.render()
+const posts = process<'blog'>(await getCollection('blog'))
+const id = posts.findIndex((post) => post.slug === Astro.params.slug)
 ---
 
 <Layout

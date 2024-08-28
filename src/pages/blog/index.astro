@@ -1,27 +1,27 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
-import PostCard from "~/components/post-card.astro";
-import Layout from "~/layouts/layout.astro";
-import { process } from "~/utils/process";
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import PostCard from '~/components/post-card.astro'
+import Layout from '~/layouts/layout.astro'
+import { process } from '~/utils/process'
 
-const blogCollection = process<"blog">(await getCollection("blog"));
+const blogCollection = process<'blog'>(await getCollection('blog'))
 
 const posts = blogCollection.reduce(
-  (acc: { [year: string]: CollectionEntry<"blog">[] }, post) => {
-    const year = post.data.date.getFullYear().toString();
+  (acc: { [year: string]: CollectionEntry<'blog'>[] }, post) => {
+    const year = post.data.date.getFullYear().toString()
     if (!acc[year]) {
-      acc[year] = [];
+      acc[year] = []
     }
-    acc[year].push(post);
-    return acc;
+    acc[year].push(post)
+    return acc
   },
   {},
-);
+)
 
 const years = Object.keys(posts).sort(
   (a, b) => Number.parseInt(b) - Number.parseInt(a),
-);
+)
 ---
 
 <Layout

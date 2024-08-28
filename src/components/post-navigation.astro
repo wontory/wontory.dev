@@ -1,17 +1,17 @@
 ---
-import type { CollectionEntry, ContentEntryMap } from "astro:content";
-import { Icon } from "astro-icon/components";
-import Button from "~/components/ui/button.astro";
+import type { CollectionEntry, ContentEntryMap } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import Button from '~/components/ui/button.astro'
 
 interface Props<T extends keyof ContentEntryMap> {
-  current: number;
-  collection: CollectionEntry<T>[];
+  current: number
+  collection: CollectionEntry<T>[]
 }
 
-const { current, collection } = Astro.props;
+const { current, collection } = Astro.props
 
-const next = collection[current + 1];
-const prev = collection[current - 1];
+const next = collection[current + 1]
+const prev = collection[current - 1]
 ---
 
 <div class="grid grid-cols-2 gap-4">

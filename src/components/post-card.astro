@@ -1,13 +1,13 @@
 ---
-import type { ContentEntryMap, CollectionEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
-import Card from "~/components/ui/card.astro";
+import type { CollectionEntry, ContentEntryMap } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+import Card from '~/components/ui/card.astro'
 
 interface Props<T extends keyof ContentEntryMap> {
-  entry: CollectionEntry<T>;
+  entry: CollectionEntry<T>
 }
 
-const { entry } = Astro.props;
+const { entry } = Astro.props
 ---
 
 <a href={`/${entry.collection}/${entry.slug}`}>
