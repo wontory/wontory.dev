@@ -1,5 +1,5 @@
 {
-  "extends": "@wontory/typescript/nextjs.json",
+  "extends": "@wontory/typescript/next.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
     "paths": {
