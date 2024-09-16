@@ -1,5 +1,5 @@
 {
-  "extends": "@wontory/typescript/react.json",
+  "extends": "@wontory/typescript/next.json",
   "compilerOptions": {
     "outDir": "dist"
   },
