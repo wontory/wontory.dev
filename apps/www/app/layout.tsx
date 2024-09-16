@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import '~/styles/globals.css'
+import '@wontory/ui/globals.css'
 
 export const metadata: Metadata = {
   title: 'Create Next App',

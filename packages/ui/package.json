@@ -4,6 +4,7 @@
   "private": true,
   "exports": {
     "./button": "./src/components/button.tsx",
+    "./globals.css": "./src/styles/globals.css",
     "./tailwind-config": "./tailwind.config.ts"
   },
   "scripts": {
