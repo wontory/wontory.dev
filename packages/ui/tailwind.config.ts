@@ -15,6 +15,11 @@ const config = {
         '2xl': '1400px',
       },
     },
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-pretendard)'],
+      },
+    },
   },
 } satisfies Config
 
