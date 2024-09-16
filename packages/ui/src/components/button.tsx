@@ -4,7 +4,7 @@ function Button({ children }: { children: React.ReactNode }) {
       <h1>Button Component</h1>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export { Button };
+export { Button }
