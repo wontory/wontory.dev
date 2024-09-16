@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+
+import { Pretendard } from '@wontory/ui/pretendard'
 import '@wontory/ui/globals.css'
 
 export const metadata: Metadata = {
@@ -12,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko" className={Pretendard.variable}>
       <body>{children}</body>
     </html>
   )
