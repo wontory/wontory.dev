@@ -6,15 +6,22 @@
     "dev": "turbo dev",
     "format": "biome format --write",
     "lint": "biome lint --write",
-    "check": "biome check --write"
+    "check": "biome check --write",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.1",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "husky": "^9.1.6",
     "turbo": "^2.1.2",
     "typescript": "^5.4.5"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {
     "node": ">=18"
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   }
 }
