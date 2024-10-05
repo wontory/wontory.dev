@@ -5,7 +5,8 @@
     "declarationMap": false,
     "plugins": [{ "name": "next" }],
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "#site/content": ["./.velite"]
     }
   },
   "include": [
