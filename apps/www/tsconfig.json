@@ -1,6 +1,8 @@
 {
   "extends": "@wontory/typescript/next.json",
   "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
     "plugins": [{ "name": "next" }],
     "paths": {
       "~/*": ["./src/*"]
