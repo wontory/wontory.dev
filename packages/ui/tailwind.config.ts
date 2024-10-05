@@ -6,7 +6,7 @@ const config = {
     './src/components/**/*.tsx',
     '../../packages/ui/src/components/**/*.tsx',
   ],
-  prefix: 'ui-',
+  prefix: '',
   theme: {
     container: {
       center: true,
