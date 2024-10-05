@@ -1,4 +1,13 @@
+import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections'
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
+import rehypeExpressiveCode, {
+  type RehypeExpressiveCodeOptions,
+} from 'rehype-expressive-code'
 import { defineCollection, defineConfig, s } from 'velite'
+
+const rehypeExpressiveCodeOptions: RehypeExpressiveCodeOptions = {
+  plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
+}
 
 const slugify = (slug: string) => slug.split('/').slice(1).join('/')
 
@@ -29,7 +38,7 @@ export default defineConfig({
   },
   collections: { blog },
   mdx: {
-    rehypePlugins: [],
+    rehypePlugins: [[rehypeExpressiveCode, rehypeExpressiveCodeOptions]],
     remarkPlugins: [],
   },
 })
