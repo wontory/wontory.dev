@@ -6,6 +6,8 @@ import rehypeExpressiveCode, {
 import { defineCollection, defineConfig, s } from 'velite'
 
 const rehypeExpressiveCodeOptions: RehypeExpressiveCodeOptions = {
+  themes: ['min-dark', 'min-light'],
+  themeCssSelector: (theme) => `.${theme.type}`,
   plugins: [pluginCollapsibleSections(), pluginLineNumbers()],
 }
 
