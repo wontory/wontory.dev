@@ -5,8 +5,9 @@
   "exports": {
     "./mode-toggle": "./src/components/mode-toggle.tsx",
     "./button": "./src/components/button.tsx",
-    "./theme-provider": "./src/providers/theme-provider.tsx",
     "./pretendard": "./src/fonts/pretendard/font.ts",
+    "./lucide": "./src/icons/lucide.ts",
+    "./theme-provider": "./src/providers/theme-provider.tsx",
     "./globals.css": "./src/styles/globals.css",
     "./tailwind-config": "./tailwind.config.ts"
   },
