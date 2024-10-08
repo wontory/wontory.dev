@@ -1,6 +1,6 @@
 import localFont from 'next/font/local'
 
-export const Pretendard = localFont({
+const Pretendard = localFont({
   src: './pretendard-variable.woff2',
   display: 'swap',
   weight: '45 920',
@@ -22,3 +22,5 @@ export const Pretendard = localFont({
     'sans-serif',
   ],
 })
+
+export { Pretendard }
