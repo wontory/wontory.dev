@@ -11,6 +11,7 @@
   "dependencies": {
     "@expressive-code/plugin-collapsible-sections": "^0.37.0",
     "@expressive-code/plugin-line-numbers": "^0.37.0",
+    "@giscus/react": "^3.0.0",
     "@wontory/ui": "workspace:*",
     "@wontory/util": "workspace:*",
     "next": "^14.2.15",

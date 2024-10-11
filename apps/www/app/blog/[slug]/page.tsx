@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { GiscusComment } from '~/components/giscus-comment'
 import { MDXContent } from '~/components/mdx-content'
 
 import { blog } from '#site/content'
@@ -41,6 +42,7 @@ export default function Post({ params }: PostProps) {
       <div className="prose dark:prose-invert">
         <MDXContent code={post.content} />
       </div>
+      <GiscusComment />
     </article>
   )
 }
