@@ -1,4 +1,4 @@
-import { ModeToggle } from '@wontory/ui/mode-toggle'
+import { ModeToggle } from '~/components/mode-toggle'
 
 function SiteFooter() {
   return (

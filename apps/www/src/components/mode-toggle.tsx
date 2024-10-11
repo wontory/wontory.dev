@@ -1,9 +1,8 @@
 'use client'
 
-import { Moon, Sun } from 'lucide-react'
-import { useTheme } from 'next-themes'
-
-import { Button } from './button'
+import { Button } from '@wontory/ui/button'
+import { Moon, Sun } from '@wontory/ui/lucide'
+import { useTheme } from '@wontory/ui/theme-provider'
 
 function ModeToggle() {
   const { resolvedTheme, setTheme } = useTheme()

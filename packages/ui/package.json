@@ -4,7 +4,6 @@
   "private": true,
   "exports": {
     "./card": "./src/components/card.tsx",
-    "./mode-toggle": "./src/components/mode-toggle.tsx",
     "./button": "./src/components/button.tsx",
     "./pretendard": "./src/fonts/pretendard/font.ts",
     "./lucide": "./src/icons/lucide.ts",
