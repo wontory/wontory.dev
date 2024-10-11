@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./card": "./src/components/card.tsx",
     "./mode-toggle": "./src/components/mode-toggle.tsx",
     "./button": "./src/components/button.tsx",
     "./pretendard": "./src/fonts/pretendard/font.ts",
