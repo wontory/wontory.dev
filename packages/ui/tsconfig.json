@@ -1,10 +1,7 @@
 {
   "extends": "@wontory/typescript/next.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "outDir": "dist"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
