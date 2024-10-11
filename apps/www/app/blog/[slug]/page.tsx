@@ -42,7 +42,9 @@ export default function Post({ params }: PostProps) {
       <div className="prose dark:prose-invert">
         <MDXContent code={post.content} />
       </div>
-      <GiscusComment />
+      <div className="py-16">
+        <GiscusComment />
+      </div>
     </article>
   )
 }
