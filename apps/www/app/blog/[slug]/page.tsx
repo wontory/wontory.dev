@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { MDXContent } from '~/components/mdx-content'
+
 import { blog } from '#site/content'
 
 interface PostProps {
