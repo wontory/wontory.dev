@@ -1,3 +1,3 @@
 export default function Home() {
-  return <></>
+  return <div className="container max-w-screen-lg" />
 }

@@ -7,7 +7,7 @@ import { SearchButton } from '~/components/search-button'
 function SiteHeader() {
   return (
     <div className="sticky top-0 z-50 w-full bg-background">
-      <div className="container flex max-w-screen-sm items-center space-x-2 py-4">
+      <div className="container flex max-w-screen-lg items-center space-x-2 py-4">
         <Link href="/" className={buttonVariants()}>
           Home
         </Link>
