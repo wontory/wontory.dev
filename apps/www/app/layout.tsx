@@ -2,7 +2,11 @@ import type { Metadata } from 'next'
 
 import { Pretendard } from '@wontory/ui/pretendard'
 import { ThemeProvider } from '@wontory/ui/theme-provider'
+import { cn } from '@wontory/util/cn'
 import '@wontory/ui/globals.css'
+
+import { SiteFooter } from '~/components/site-footer'
+import { SiteHeader } from '~/components/site-header'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,10 +19,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ko" className={Pretendard.variable} suppressHydrationWarning>
-      <body>
+    <html lang="ko" suppressHydrationWarning>
+      <body className={cn('font-sans antialiased', Pretendard.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <div className="flex min-h-screen flex-col">
+            <SiteHeader />
+            <main className="container max-w-screen-sm flex-1">{children}</main>
+            <SiteFooter />
+          </div>
         </ThemeProvider>
       </body>
     </html>
