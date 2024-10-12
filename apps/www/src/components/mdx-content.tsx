@@ -1,5 +1,10 @@
-import type React from 'react'
 import * as runtime from 'react/jsx-runtime'
+
+import { ImageZoom, type ImageZoomProps } from '~/components/image-zoom'
+
+const sharedComponents = {
+  img: (props: ImageZoomProps) => <ImageZoom {...props} />,
+}
 
 const useMDXComponent = (code: string) => {
   const fn = new Function(code)
@@ -11,7 +16,10 @@ interface MDXProps {
   components?: Record<string, React.ComponentType>
 }
 
-export const MDXContent = ({ code, components }: MDXProps) => {
+function MDXContent({ code, components }: MDXProps) {
   const Component = useMDXComponent(code)
-  return <Component components={{ ...components }} />
+
+  return <Component components={{ ...sharedComponents, ...components }} />
 }
+
+export { MDXContent }
