@@ -34,7 +34,7 @@ export default function Post({ params }: PostProps) {
   if (!post) notFound()
 
   return (
-    <article className="container max-w-screen-sm py-16 space-y-24">
+    <article className="container max-w-screen-sm space-y-24 py-16">
       <div className="space-y-4 text-center">
         <h1 className="font-semibold text-3xl">{post.title}</h1>
         <p className="text-primary/60 text-sm">{post.description}</p>
