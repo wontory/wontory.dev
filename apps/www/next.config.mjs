@@ -7,6 +7,15 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
 }
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+    ],
+  },
+}
 
 export default nextConfig
