@@ -34,15 +34,15 @@ export default function Post({ params }: PostProps) {
   if (!post) notFound()
 
   return (
-    <article className="container max-w-screen-sm">
-      <div className="space-y-4 py-16 text-center">
+    <article className="container max-w-screen-sm py-16 space-y-24">
+      <div className="space-y-4 text-center">
         <h1 className="font-semibold text-3xl">{post.title}</h1>
         <p className="text-primary/60 text-sm">{post.description}</p>
       </div>
       <div className="prose dark:prose-invert">
         <MDXContent code={post.content} />
       </div>
-      <div className="py-16">
+      <div>
         <GiscusComment />
       </div>
     </article>
