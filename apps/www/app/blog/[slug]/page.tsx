@@ -6,6 +6,7 @@ import { format, ko } from '@wontory/util/date-fns'
 
 import { GiscusComment } from '~/components/giscus-comment'
 import { MDXContent } from '~/components/mdx-content'
+import { PostNavigation } from '~/components/post-navigation'
 
 import { blog } from '#site/content'
 
@@ -55,6 +56,7 @@ export default function Post({ params }: PostProps) {
       <div className="prose dark:prose-invert">
         <MDXContent code={post.content} />
       </div>
+      <PostNavigation slug={post.slug} />
       <div>
         <GiscusComment />
       </div>
