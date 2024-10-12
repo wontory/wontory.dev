@@ -12,10 +12,13 @@ function ImageZoom({ ...props }: ImageZoomProps) {
     <Zoom
       zoomMargin={20}
       wrapElement="span"
-      zoomImg={{ src: props.src, className: 'rounded-sm' }}
+      zoomImg={{
+        src: props.src,
+        className: 'rounded-sm border shadow-primary/5 shadow-xl',
+      }}
     >
       <Image
-        className="rounded-sm"
+        className="rounded-sm border shadow-primary/5 shadow-xl"
         width={props.width ?? 640}
         height={props.height ?? 640}
         {...props}

@@ -44,5 +44,5 @@
 }
 
 [data-rmiz-modal-img] {
-  @apply cursor-zoom-out absolute transition-transform duration-300 origin-top-left rounded-sm
+  @apply cursor-zoom-out absolute transition-transform duration-300 origin-top-left rounded-sm border shadow-primary/5 shadow-xl
 }
