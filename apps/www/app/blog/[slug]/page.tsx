@@ -49,7 +49,9 @@ export default function Post({ params }: PostProps) {
           </span>
           <span className="flex items-center gap-2">
             <ClockIcon className="size-3" />
-            {post.metadata.readingTime}분
+            {post.metadata.readingTime > 0
+              ? `${post.metadata.readingTime}분`
+              : '1분 이하'}
           </span>
         </div>
       </div>
