@@ -21,6 +21,7 @@ function ImageZoom({ ...props }: ImageZoomProps) {
         className="rounded-sm border shadow-primary/5 shadow-xl"
         width={props.width ?? 640}
         height={props.height ?? 640}
+        draggable={false}
         {...props}
       />
     </Zoom>
