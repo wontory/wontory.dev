@@ -5,7 +5,9 @@ import { PostCard } from '~/components/post-card'
 import { blog } from '#site/content'
 
 export default function Blog() {
-  const posts = blog.sort((a, b) => (a.date > b.date ? -1 : 1))
+  const posts = blog.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  )
 
   return (
     <div className="container max-w-screen-lg space-y-24 py-16">
