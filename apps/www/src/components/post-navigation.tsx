@@ -36,7 +36,7 @@ function PostNavigation({ slug }: PostNavigationProps) {
           className="flex items-center justify-end gap-6 rounded-xl border p-6 transition-colors hover:bg-primary/5"
         >
           <span className="line-clamp-1 text-sm">{next.title}</span>
-          <ArrowRightIcon />
+          <ArrowRightIcon className="size-4" />
         </Link>
       ) : (
         <div className="invisible" />
