@@ -1,0 +1,48 @@
+[data-rmiz] {
+  @apply block relative
+}
+
+[data-rmiz-ghost] {
+  @apply absolute pointer-events-none
+}
+
+[data-rmiz-btn-zoom],
+[data-rmiz-btn-unzoom] {
+  @apply hidden
+}
+
+[data-rmiz-content="found"] img {
+  @apply cursor-zoom-in
+}
+
+[data-rmiz-modal][open] {
+  @apply w-dvw h-dvh bg-transparent max-w-none max-h-none m-0 p-0 fixed overflow-hidden
+}
+
+[data-rmiz-modal]:focus-visible {
+  @apply outline-none
+}
+
+[data-rmiz-modal-overlay] {
+  @apply transition-colors duration-300 absolute inset-0
+}
+
+[data-rmiz-modal-overlay="hidden"] {
+  @apply bg-transparent
+}
+
+[data-rmiz-modal-overlay="visible"] {
+  @apply bg-background
+}
+
+[data-rmiz-modal-content] {
+  @apply w-full h-full relative
+}
+
+[data-rmiz-modal]::backdrop {
+  @apply hidden
+}
+
+[data-rmiz-modal-img] {
+  @apply cursor-zoom-out absolute transition-transform duration-300 origin-top-left rounded-sm
+}
