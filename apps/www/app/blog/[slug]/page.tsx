@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { CalendarIcon, ClockIcon } from '@wontory/ui/lucide'
+import { format, ko } from '@wontory/util/date-fns'
+
 import { GiscusComment } from '~/components/giscus-comment'
 import { MDXContent } from '~/components/mdx-content'
 
@@ -38,6 +41,16 @@ export default function Post({ params }: PostProps) {
       <div className="space-y-4 text-center">
         <h1 className="font-semibold text-3xl">{post.title}</h1>
         <p className="text-primary/60 text-sm">{post.description}</p>
+        <div className="flex justify-center gap-8 text-primary text-sm">
+          <span className="flex items-center gap-2">
+            <CalendarIcon className="size-3" />
+            {format(post.date, 'PPP', { locale: ko })}
+          </span>
+          <span className="flex items-center gap-2">
+            <ClockIcon className="size-3" />
+            {post.metadata.readingTime}분
+          </span>
+        </div>
       </div>
       <div className="prose dark:prose-invert">
         <MDXContent code={post.content} />

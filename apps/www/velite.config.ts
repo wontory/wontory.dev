@@ -13,11 +13,16 @@ const rehypeExpressiveCodeOptions: RehypeExpressiveCodeOptions = {
 
 const slugify = (slug: string) => slug.split('/').slice(1).join('/')
 
+const calculateReadingTime = (wordCount: number) => ({
+  readingTime: Math.round(wordCount / 120),
+})
+
 const blog = defineCollection({
   name: 'Post',
   pattern: 'blog/**/*.mdx',
   schema: s
     .object({
+      metadata: s.metadata(),
       slug: s.path(),
       title: s.string().max(99),
       description: s.string().max(999).optional(),
@@ -26,7 +31,11 @@ const blog = defineCollection({
       content: s.mdx(),
       toc: s.toc(),
     })
-    .transform((data) => ({ ...data, slug: slugify(data.slug) })),
+    .transform((data) => ({
+      ...data,
+      metadata: calculateReadingTime(data.metadata.wordCount),
+      slug: slugify(data.slug),
+    })),
 })
 
 export default defineConfig({
