@@ -47,10 +47,30 @@ export default function Home() {
       <hr />
       <div className="flex flex-col space-y-8">
         <div className="flex justify-center gap-4">
-          <Link href="https://github.com/wontory">GitHub</Link>
-          <Link href="https://www.linkedin.com/in/wontory/">LinkedIn</Link>
-          <Link href="mailto:devwontory@gmail.com">Gmail</Link>
-          <Link href="mailto:tjddnjsjo@kakao.com">KakaoMail</Link>
+          <Link
+            href="https://github.com/wontory"
+            className="underline underline-offset-4"
+          >
+            GitHub
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/wontory/"
+            className="underline underline-offset-4"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            href="mailto:devwontory@gmail.com"
+            className="underline underline-offset-4"
+          >
+            Gmail
+          </Link>
+          <Link
+            href="mailto:tjddnjsjo@kakao.com"
+            className="underline underline-offset-4"
+          >
+            KakaoMail
+          </Link>
         </div>
         <p className="text-center text-primary/60 text-sm">
           Don't hesitate to contact me.
