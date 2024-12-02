@@ -19,7 +19,7 @@ export default function Blog() {
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {posts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
+          <Link key={post.slug} href={`/blog/${post.slug}`} scroll={false}>
             <PostCard post={post} />
           </Link>
         ))}

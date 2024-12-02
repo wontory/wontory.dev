@@ -15,8 +15,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode
+  modal: React.ReactNode
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
@@ -27,6 +29,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
+          {modal}
         </ThemeProvider>
       </body>
     </html>
